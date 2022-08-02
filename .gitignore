@@ -1,0 +1,8 @@
+.env
+node_modules/
+videos/
+screenshots/
+downloads/
+.vscode/
+allure-results
+.DS_Store
