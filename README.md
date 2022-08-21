@@ -53,7 +53,24 @@ The followings are known issues and how to fix them.
 Install cypress dependency via npm once you are in your project path:
 1. cd /your/project/path
 2. npm install cypress --save-dev
+# 6. Reporting
+Reports are automatically generated with each run as per the following environment variables
 
+``` 
+    allure: true,
+    allureResultsPath: "allure-results"
+```
+
+For this work locally, first install Allure on your machine using Brew:
+``` 
+brew install allure
+```
+Once the test run in finished, the raw report will be generated in the path set up (currently /allure-results)
+To create and open the report, simply run:
+
+```
+allure serve /allure-results
+```
 
 
 
