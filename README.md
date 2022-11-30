@@ -65,17 +65,33 @@ For this work locally, first install Allure on your machine using Brew:
 ``` 
 brew install allure
 ```
+if homebrew is not installed this error will pop up:
+
+```
+zsh: command not found: brew
+```
+To install homebrew:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+follow the final steps from the installation:
+
+```
+==> Next steps:
+- Run these three commands in your terminal to add Homebrew to your PATH:
+    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/YOUR_USER/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/YOUR_USER/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+- Run brew help to get started
+- Further documentation:
+    https://docs.brew.sh
+
+```
+
 Once the test run in finished, the raw report will be generated in the path set up (currently /allure-results)
 To create and open the report, simply run:
 
 ```
-allure serve /allure-results
+allure serve allure-results
 ```
-
-
-
-
-
-
-
-
