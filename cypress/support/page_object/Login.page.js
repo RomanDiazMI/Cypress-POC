@@ -25,6 +25,14 @@ class LoginPage {
         this.getExistentEmailErrorMessage().should('be.visible').and('have.text', text);
 
     }
+    getIncorrectMailOrPasswordErrorMessage(){
+        return cy.get('.login-form > form > p');
+
+    }
+    validateIncorrectMailOrPasswordErrorMessageText(text){
+        this.getIncorrectMailOrPasswordErrorMessage().should('be.visible').and('have.text', text);
+
+    }
     clickOnSignupButton(){
         cy.get('[data-qa="signup-button"]').should('be.visible').click();
         return new RegisterPage();

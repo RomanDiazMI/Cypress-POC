@@ -16,10 +16,6 @@ class AccountDeletedPage {
         cy.get('[data-qa="continue-button"]').click();
 
     }
-    validateValue(element, whatToValidate, expectedValue){
-        element.should(whatToValidate, expectedValue);
-
-    }
 
 }
 

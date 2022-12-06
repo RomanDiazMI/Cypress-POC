@@ -114,10 +114,6 @@ class RegisterPage {
         return new AccountCreatedPage();
 
     }
-    checkValue(element, expectedValue){
-        element.should("have.value", expectedValue);
-
-    }
 
 }
 
