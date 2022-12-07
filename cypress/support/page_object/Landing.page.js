@@ -3,6 +3,7 @@ import LoginPage  from '../../support/page_object/Login.page'
 import AccountDeletedPage from './AccountDeleted.page';
 import ContactUsPage from './ContactUs.page';
 import ProductsPage from './Products.page';
+import CartPage from './Cart.page';
 class LandingPage {
     getLoginButton() {
         return cy.get('[href="/login"]');
@@ -50,6 +51,31 @@ class LandingPage {
     clickOnProductsButton(){
         this.getProductsButton().click();
         return new ProductsPage();
+
+    }
+    getCartButton(){
+        return cy.get('[href="/view_cart"]').first();
+
+    }
+    clickOnCartButton(){
+        this.getCartButton().click();
+        return new CartPage();
+
+    }
+    getSubscriptionTitle(){
+        return cy.get('.single-widget > h2');
+
+    }
+    getSubscriptionInputbox(){
+        return cy.get('#susbscribe_email');
+
+    }
+    clickOnSubscribeButton(){
+        cy.get('#subscribe').click();
+
+    }
+    getAlertSubscriptionSuccess(){
+        return cy.get('.alert-success');
 
     }
 

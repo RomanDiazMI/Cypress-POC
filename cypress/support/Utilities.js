@@ -15,7 +15,15 @@ class utilities {
         element.should('eq', expectedValue);
     
     }
+    typeInto(element, text){
+        element.type(text);
 
+    }
+    selectFromLOV(element, selection){
+        element.select(selection);
+
+    }
+    
 }
 
 export default utilities;

@@ -23,21 +23,22 @@ filterTests(['regression', 'register'], function() {
         it('Register user', function() {
             loginPage = landingPage.clickLoginButton();
 
-            loginPage.typeSignupUsername("John Constantine");
-            loginPage.typeSignupEmail("mail@mail.com");
+            utilities.typeInto(loginPage.getSignupUsername(), "John Constantine");
+            utilities.typeInto(loginPage.getSignupEmail(), "mail@mail.com");
+
             registerPage = loginPage.clickOnSignupButton();
 
             registerPage.clickGenderRadioButton('#id_gender1');
 
             utilities.validate(registerPage.getName(),'have.value', "John Constantine");
             utilities.validate(registerPage.getEmail(),'have.value', "mail@mail.com");
-            registerPage.typePassword("somepassword123")
+            utilities.typeInto(registerPage.getPassword(), "somepassword123");
 
             registerPage.setBirthDate("1", "January", "1990");
             registerPage.setBasicInfo("John", "Constantine", "neAT&Tidy");
 
             registerPage.setAddresInfo("98 Some Address St.", "United States", "Texas", "Austin", "73301")
-            registerPage.typeMobileNumber("512-441-400");
+            utilities.typeInto(registerPage.getMobileNumber(), "512-441-400");
 
             accountCreatedPage = registerPage.clickOnCreateAccountButton();
 
@@ -56,8 +57,8 @@ filterTests(['regression', 'register'], function() {
         it('Register an existent user', function() {
             loginPage = landingPage.clickLoginButton();
 
-            loginPage.typeSignupUsername("John Constantine");
-            loginPage.typeSignupEmail("mail@mail.com");
+            utilities.typeInto(loginPage.getSignupUsername(), "John Constantine");
+            utilities.typeInto(loginPage.getSignupEmail(), "mail@mail.com");
             loginPage.clickOnSignupButton();
 
             loginPage.validateExistentEmailErrorMessageText('Email Address already exist!')
@@ -66,8 +67,8 @@ filterTests(['regression', 'register'], function() {
         it('Logout user', function() {
             loginPage = landingPage.clickLoginButton();
 
-            loginPage.typeLoginEmail("mail@mail.com");
-            loginPage.typeLoginPassword("somepassword123");
+            utilities.typeInto(loginPage.getLoginEmail(), "mail@mail.com");
+            utilities.typeInto(loginPage.getLoginPassword(), "somepassword123")
 
             loginPage.clickOnLoginButton();
             landingPage.clickOnLogoutButtonButton();
@@ -78,8 +79,8 @@ filterTests(['regression', 'register'], function() {
         it('Login and delete user', function() {
             loginPage = landingPage.clickLoginButton();
 
-            loginPage.typeLoginEmail("mail@mail.com");
-            loginPage.typeLoginPassword("somepassword123");
+            utilities.typeInto(loginPage.getLoginEmail(), "mail@mail.com");
+            utilities.typeInto(loginPage.getLoginPassword(), "somepassword123")
 
             loginPage.clickOnLoginButton();
 
@@ -102,8 +103,8 @@ filterTests(['regression', 'register'], function() {
         it('Incorrect login', function() {
             loginPage = landingPage.clickLoginButton();
 
-            loginPage.typeLoginEmail("mail@gmail.com");
-            loginPage.typeLoginPassword("invalid");
+            utilities.typeInto(loginPage.getLoginEmail(), "mail@gmail.com");
+            utilities.typeInto(loginPage.getLoginPassword(), "invalid")
 
             loginPage.clickOnLoginButton();
 

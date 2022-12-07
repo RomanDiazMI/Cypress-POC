@@ -1,12 +1,14 @@
 import filterTests from "../../support/filterTests";
 import LandingPage  from '../../support/page_object/Landing.page'
+import Utilities from "../../support/Utilities";
 
 const allure = Cypress.Allure.reporter.getInterface();
 
 
 filterTests(['regression', 'contact us'], function() {
-    allure.feature('Register and delete user')
-    describe('user should register to the app, then delete the account', function() {
+    allure.feature('Contact us form')
+    describe('contact us form testing', function() {
+        const utilities = new Utilities()
         const landingPage = new LandingPage();
         let contactUsPage;
 
@@ -18,12 +20,12 @@ filterTests(['regression', 'contact us'], function() {
             contactUsPage = landingPage.clickOnContactUsButton();
             contactUsPage.validateGetInTouchTitle("Get In Touch");
             
-            contactUsPage.typeName('John Constantine');
-            contactUsPage.typeEmail('mail@mail.com');
-            contactUsPage.typeSubject('testing contact us form');
-            contactUsPage.typeMessage('testing message textarea from contact us form');
+            utilities.typeInto(contactUsPage.getName(), 'John Constantine');
+            utilities.typeInto(contactUsPage.getEmail(), 'mail@mail.com');
+            utilities.typeInto(contactUsPage.getSubject(), 'testing contact us form');
+            utilities.typeInto(contactUsPage.getMessage(), 'testing message textarea from contact us form');
             
-            contactUsPage.clickOnSubmitButton()
+            contactUsPage.clickOnSubmitButton();
 
             contactUsPage.validateStatusMessage('Success! Your details have been submitted successfully.');
             

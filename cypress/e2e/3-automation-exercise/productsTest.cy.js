@@ -6,8 +6,8 @@ const allure = Cypress.Allure.reporter.getInterface();
 
 
 filterTests(['regression', 'contact us'], function(){
-    allure.feature('Register and delete user')
-    describe('user should register to the app, then delete the account', function() {
+    allure.feature('product test')
+    describe('product tests', function() {
         const utilities = new Utilities();
         const landingPage = new LandingPage();
         let productsPage;

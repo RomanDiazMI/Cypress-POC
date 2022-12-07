@@ -1,6 +1,8 @@
 import AccountCreatedPage  from '../../support/page_object/AccountCreated.page'
-
+import Utilities from '../Utilities';
+const utilities = new Utilities();
 class RegisterPage {
+
     getGenderRadioButton(genderId){
         return cy.get(genderId);
     }
@@ -20,10 +22,6 @@ class RegisterPage {
         return cy.get('#password');
 
     }
-    typePassword(password){
-        this.getPassword().type(password);
-
-    }
     getDays(){
         return cy.get('#days');
 
@@ -37,9 +35,9 @@ class RegisterPage {
 
     }
     setBirthDate(day, month, year){
-        this.getDays().select(day);
-        this.getMonth().select(month);
-        this.getYear().select(year);
+        utilities.selectFromLOV(this.getDays(), day);
+        utilities.selectFromLOV(this.getMonth(), month);
+        utilities.selectFromLOV(this.getYear(), year);
 
     }
     getFirstName(){
@@ -55,9 +53,9 @@ class RegisterPage {
 
     }
     setBasicInfo(name, lastname, company){
-        this.getFirstName().type(name);
-        this.getLastname().type(lastname);
-        this.getCompany().type(company);
+        utilities.typeInto(this.getFirstName(), name);
+        utilities.typeInto(this.getLastname(), lastname);
+        utilities.typeInto(this.getCompany(), company);
 
     }
     getAddress(){
@@ -85,28 +83,23 @@ class RegisterPage {
 
     }
     setAddresInfo(address, country, state, city, zipCode){
-        this.getAddress().type(address);
-        this.getCountry().select(country);
-        this.getState().type(state);
-        this.getCity().type(city);
-        this.getZipCode().type(zipCode);
+        utilities.typeInto(this.getAddress(), address);
+        utilities.selectFromLOV(this.getCountry(), country);
+        utilities.typeInto(this.getState(), state);
+        utilities.typeInto(this.getCity(), city);
+        utilities.typeInto(this.getZipCode(), zipCode);
 
     }
     setCompleteAddresInfo(address, adress2, country, state, city, zipCode){
-        this.getAddress().type(address);
-        this.getAddressTwo(adress2);
-        this.getCountry().select(country);
-        this.getState().type(state);
-        this.getCity().type(city);
-        this.getZipCode().type(zipCode);
+        utilities.typeInto(this.getAddress(), address);
+        utilities.typeInto(this.getAddressTwo(), adress2);
+        utilities.selectFromLOV(this.getCountry(), country);
+        utilities.typeInto(this.getState(), state);
+        utilities.typeInto(this.getCity(), city);
 
     }
     getMobileNumber(){
         return cy.get('#mobile_number');
-
-    }
-    typeMobileNumber(mobileNumber){
-        this.getMobileNumber().type(mobileNumber);
 
     }
     clickOnCreateAccountButton(){
